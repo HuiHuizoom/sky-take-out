@@ -59,4 +59,18 @@ public class DishController {
         return Result.success();
     }
 
+    /**
+     * 对菜品进行起售禁售
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("停售起售菜品")
+    public Result<String> startOrStop(@PathVariable Integer status, Long id){
+        dishService.startOrStop(status, id);
+
+        return Result.success();
+    }
+
 }

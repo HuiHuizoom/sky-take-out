@@ -87,6 +87,8 @@ public class DishServiceImpl implements DishService {
         return pageResult1;
     }
 
+
+
     /**
      * 批量删除菜品
      * @param ids
@@ -110,5 +112,18 @@ public class DishServiceImpl implements DishService {
         dishMapper.deleteBatch(ids);
         dishFlavorMapper.deleteBatch(ids);
     }
+
+    /**
+     * 对菜品进行起售禁售
+     * @param status
+     * @param id
+     */
+
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        Dish dish = Dish.builder().id(id).status(status).build();
+        dishMapper.update(dish);
+    }
+
 }
 

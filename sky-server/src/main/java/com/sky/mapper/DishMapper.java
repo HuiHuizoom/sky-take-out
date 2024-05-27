@@ -58,4 +58,8 @@ public interface DishMapper {
     void deleteBatch(List<Long> dishIds);
 
 
+
+
+    @AutoFill(OperationType.UPDATE)
+    void update(Dish dish);
 }
