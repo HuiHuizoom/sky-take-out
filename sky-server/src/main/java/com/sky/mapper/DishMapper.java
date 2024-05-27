@@ -38,8 +38,6 @@ public interface DishMapper {
      */
     Page<Dish> pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
-
-
     /**
      *
      * 通过id 查询菜品
@@ -49,17 +47,22 @@ public interface DishMapper {
     @Select("select * from dish where id=#{id}")
     Dish getById(Long id);
 
-
-
     /**
      * 批量删除
      * @param dishIds
      */
     void deleteBatch(List<Long> dishIds);
 
-
-
-
     @AutoFill(OperationType.UPDATE)
     void update(Dish dish);
+
+    void insertBatch(List<DishFlavor> flavors);
+
+    /**
+     * 根据分类id查询菜品
+     * @param dish
+     * @return
+     */
+    List<Dish> list(Dish dish);
+
 }
